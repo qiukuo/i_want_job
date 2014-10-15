@@ -299,9 +299,15 @@ CSS3有哪些新特性？
   对文字加特效（text-shadow、），线性渐变（gradient），旋转（transform）
   transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);//旋转,缩放,定位,倾斜
   增加了更多的CSS选择器  多背景 rgba 
-一个满屏 品 字布局 如何设计?
 
+一个满屏 品 字布局 如何设计?
+  *先设置body 
+  *第一个div 使用居中
+  *剩下两个div 使用float 定位在左右
 经常遇到的CSS的兼容性有哪些？原因，解决方法是什么？
+  !important 的支持程度不同。
+  浏览器对盒模型的支持程度不同。（ie盒模型 的内容宽度包括了border padding 当你使用正确的文档声明时 就不会出现这种问题 ）
+  浏览器对属性的支持不同时，可以使用相关的hack技术。
 
 为什么要初始化CSS样式。
 
@@ -357,23 +363,42 @@ div{
 .class1 .class2 div{
 } 
 
+
 如果权重相同，则最后定义的样式会起作用，但是应该避免这种情况出现
 解释下浮动和它的工作原理？清除浮动的技巧
+  浮动的框可以向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。
+  由于浮动框不在文档的普通流中，所以文档的普通流中的块框表现得就像浮动框不存在一样
 
 用过媒体查询，针对移动端的布局吗？
+  html中的
+  <link rel="stylesheet" type="text/css" href="site.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="print.css" media="print" />
+
+  css:
+  @media(min-width:300px){}
+  @media (orientation: landscape) { ... }
+  针对手机或平板的媒体查询
 
 使用 CSS 预处理器吗？喜欢那个？
 
-SASS 
+LESS
+SASS
+
+(至今都没使用过，有时间可以去试试) 
+
 如果需要手动写动画，你认为最小时间间隔是多久，为什么？（阿里）
 
 多数显示器默认频率是60Hz，即1秒刷新60次，所以理论上最小间隔为1/60＊1000ms ＝ 16.7ms
+
 display:inline-block 什么时候会显示间隙？(携程)
 
 移除空格、使用margin负值、使用font-size:0、letter-spacing、word-spacing
-JavaScript
+
+**JavaScript**
 
 JavaScript原型，原型链 ? 有什么特点？
+    这个问题应该说比较多 大家可以参考这个blog
+    http://blog.baiwand.com/?post=209
 
 eval是做什么的？
 
@@ -473,7 +498,7 @@ Javascript如何实现继承？
 
  [1, NaN, NaN] 因为 parseInt 需要两个参数 (val, radix) 但 map 传了 3 个 (element, index, array)
 如何创建一个对象? （画出此对象的内存图）
-
+  各种创建的方式 以及优劣****
   function Person(name, age) {
     this.name = name;
     this.age = age;
@@ -534,12 +559,17 @@ JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。
 js延迟加载的方式有哪些？
 
 defer和async、动态创建DOM方式（用得最多）、按需异步载入js
+
 ajax 是什么?
 
+AJAX即“Asynchronous Javascript And XML[1] ”（异步JavaScript和XML[1] ），是指一种创建交互式网页应用的网页开发技术。
+
 同步和异步的区别?
-
+  同步是指在发起一个调用时在没有结果前，这个调用就一直等待。也就是必须一件一件的做。
+  异步是指发起一个调用之后，继续执行之后的程序，当调用的结果产生时通过回调函数来继续之后的操作。
 如何解决跨域问题?
-
+  工作室一个前辈的博客 大家参考：
+  http://www.kirsten-s.me/index.php/detail/index/41
 jsonp、 iframe、window.name、window.postMessage、服务器上设置代理页面
 模块化怎么做？
 
